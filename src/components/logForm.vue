@@ -81,7 +81,7 @@
             this.errorText = '部分选项未通过'
           }else{
             this.errorText = '';
-            this.$http.get('api/login')
+            this.$http.get('/api/login')
               .then((res) => {
                 console.log(res.data.login);
                 this.$emit('has-log',res.data.login)
