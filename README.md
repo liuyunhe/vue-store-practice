@@ -1,7 +1,8 @@
-# vue2-store-practice
+# vue-store-practice
 
-> A Vue.js project
-
+> A Vue.js project(>2.0)
+> Just practice and for fun
+> vue2 + vue-router + vue-resource
 ## Build Setup
 
 ``` bash
