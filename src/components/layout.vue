@@ -194,7 +194,7 @@
 
 <script>
 
-    import Dialog from './dialog'
+    import Dialog from './base/dialog'
     import logFrom from './logForm'
     export default {
 //      created:function () {
