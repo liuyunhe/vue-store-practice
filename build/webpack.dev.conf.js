@@ -88,7 +88,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
           createOrder: createOrder
         })
       }),
-      app.get('/api/getOrderList', (req, res) => {
+      app.post('/api/getOrderList', (req, res) => {
         res.json({
           errno: 0,
           getOrderList: getOrderList
