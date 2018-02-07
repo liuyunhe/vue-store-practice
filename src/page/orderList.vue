@@ -16,7 +16,7 @@
         </div>
         <div class="order-list-option">
           关键词：
-          <input type="text" v-model.lazy="query" class="order-query">
+          <input type="text" v-model.lazy="inputQuery" class="order-query">
         </div>
       </div>
       <div class="order-list-table">
@@ -47,7 +47,7 @@
     },
     data() {
         return {
-          query:'',
+          inputQuery:'',
           productId:0,
           startDate:'',
           endDate:'',
@@ -104,7 +104,7 @@
         }
     },
     watch:{
-      query() {
+      inputQuery() {
         this.getTableData();
       }
     },
@@ -123,7 +123,7 @@
       },
       getTableData() {
         let reqParam = {
-          query:this.query,
+          inputQuery:this.inputQuery,
           productId:this.productId,
           startDate:this.startDate,
           endDate:this.endDate
