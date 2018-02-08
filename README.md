@@ -2,9 +2,9 @@
 
 > A Vue.js project (2.0)
 
-> Just practice and for fun
-
 > vue2 + vue-router + vue-resource + lodash
+
+> Just practice and for fun
 
 > If it helps, you can click "star" in the upper right corner to support it. thank you! ^_^
 
