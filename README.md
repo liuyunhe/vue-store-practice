@@ -4,7 +4,7 @@
 
 > Just practice and for fun
 
-> vue2 + vue-router + vue-resource
+> vue2 + vue-router + vue-resource + lodash
 
 > If it helps, you can click "star" in the upper right corner to support it. thank you! ^_^
 
