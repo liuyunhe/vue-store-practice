@@ -34,16 +34,18 @@
         </table>
       </div>
     </div>
+    <my-dialog :is-show="isShow" @on-close="closeDialog">结束时间不能小于开始时间</my-dialog>
   </div>
 </template>
 
 <script>
   import VSelection from '../components/base/selection.vue'
   import VDatePicked from '../components/base/datepicker.vue'
+  import MyDialog from '../components/base/dialog.vue'
   import _ from 'lodash'
   export default {
     components:{
-      VSelection,VDatePicked
+      VSelection,VDatePicked,MyDialog
     },
     data() {
         return {
@@ -51,6 +53,8 @@
           productId:0,
           startDate:'',
           endDate:'',
+          endValue:'',
+          isShow:false,
           products: [
             {
               label: '数据统计',
@@ -100,13 +104,17 @@
             }
           ],
           tableData:[],
-          currentOrder:'desc'
+          currentOrder:'desc',
+
         }
     },
     watch:{
       inputQuery() {
         this.getTableData();
       }
+    },
+    computed:{
+
     },
     methods:{
       productChange(obj) {
@@ -132,7 +140,6 @@
           .then((res)=>{
             this.tableData = res.data.getOrderList.list
           },(err)=>{
-
           })
       },
       changeOrder(headItem) {
@@ -148,6 +155,9 @@
           this.currentOrder = "desc";
         }
         this.tableData = _.orderBy(this.tableData,headItem.key,this.currentOrder)
+      },
+      closeDialog(){
+        this.isShow = false;
       }
     },
     mounted() {
