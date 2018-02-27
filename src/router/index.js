@@ -8,6 +8,8 @@ import Count from  '../page/detail/count.vue'
 import Publish from  '../page/detail/publish.vue'
 import OrderList from '../page/orderList.vue'
 import DatePicker from '../page/datePicker.vue'
+import User from '../page/user.vue'
+import ccc from '../page/userchild.vue'
 
 Vue.use(Router)
 
@@ -52,6 +54,18 @@ export default new Router({
       path: '/datePicker',
       name: 'datePicker',
       component: DatePicker
+    },
+    {
+      path: '/user/:id',
+      name: 'User',
+      component: User,
+      children:[
+        {
+          path: 'ccc',
+          name: 'ccc',
+          component: ccc
+        }
+      ]
     },
   ]
 })

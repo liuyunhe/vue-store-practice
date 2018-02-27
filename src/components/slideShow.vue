@@ -19,7 +19,6 @@
       <li @click="goTo(nextIndex)">&gt;</li>
     </ul>
   </div>
-
 </template>
 
 <script>
