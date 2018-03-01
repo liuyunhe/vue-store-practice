@@ -1,14 +1,14 @@
 <template>
   <div class="slide-show" @mouseover="clearIntv" @mouseout="runIntv">
     <div class="slide-img">
-      <a :href="slides[nowIndex].href">
+      <router-link :to="{path:slides[nowIndex].href}" >
         <transition name="slide-trans">
           <img v-if="isShow" :src="slides[nowIndex].src" alt="">
         </transition>
         <transition name="slide-trans-old">
           <img v-if="!isShow" :src="slides[nowIndex].src" alt="">
         </transition>
-      </a>
+      </router-link>
     </div>
     <h2>{{ slides[nowIndex].title }}</h2>
     <ul class="slide-pages">
