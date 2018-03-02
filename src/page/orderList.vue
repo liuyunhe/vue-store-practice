@@ -136,7 +136,7 @@
           startDate:this.startDate,
           endDate:this.endDate
         }
-        this.$http.post('/api/getOrderList',reqParam)
+        this.$http.post('./api/getOrderList',reqParam)
           .then((res)=>{
             this.tableData = res.data.getOrderList.list
           },(err)=>{

@@ -39,7 +39,7 @@
               <h2>{{ item.title }}</h2>
               <p>{{ item.description }}</p>
               <div class="index-board-button">
-                <router-link :to="{path:'/detail/' + item.toKey}" class="button">立即购买</router-link>
+                <router-link :to="{path:'./detail/' + item.toKey}" class="button">立即购买</router-link>
               </div>
             </div>
           </div>
@@ -70,22 +70,22 @@
             {
               src: require('../assets/slideShow/pic1.jpg'),
               title: 'xxx1',
-              href: '/detail/analysis'
+              href: './detail/analysis'
             },
             {
               src: require('../assets/slideShow/pic2.jpg'),
               title: 'xxx2',
-              href: '/detail/count'
+              href: './detail/count'
             },
             {
               src: require('../assets/slideShow/pic3.jpg'),
               title: 'xxx3',
-              href: '/detail/publish'
+              href: './detail/publish'
             },
             {
               src: require('../assets/slideShow/pic4.jpg'),
               title: 'xxx4',
-              href: '/detail/forecast'
+              href: './detail/forecast'
             }
           ],
           productList:{

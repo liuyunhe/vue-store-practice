@@ -2,7 +2,7 @@
   <div>
       <div>{{ id }}</div>
       <div>{{ username }}</div>
-      <router-link :to="{path:`/user/${username}/ccc`}">跳转</router-link>
+      <router-link :to="{path:`./user/${username}/ccc`}">跳转</router-link>
       <router-view></router-view>
   </div>
 </template>
