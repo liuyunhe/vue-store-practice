@@ -1,3 +1,5 @@
+**demo**: [https://liuyunhe.github.io/vue-store-practice/demo](https://liuyunhe.github.io/vue-store-practice/demo)
+
 # vue-store-practice
 
 > A Vue.js project (2.0)
