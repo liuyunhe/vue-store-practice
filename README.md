@@ -1,4 +1,4 @@
-**demo**: [https://liuyunhe.github.io/vue-store-practice/demo](https://liuyunhe.github.io/vue-store-practice/demo)
+**demo**: [https://liuyunhe.github.io/vue-store-practice/](https://liuyunhe.github.io/vue-store-practice/)
 
 # vue-store-practice
 
