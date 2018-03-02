@@ -102,7 +102,7 @@
               <td>{{ buyType.label }}</td>
               <td>{{ period.label }}</td>
               <td>
-                <span v-for="item in versions">{{ item.label }}</span>
+                <span v-for="(item,index) in versions">{{!index ?  item.label :',' + item.label}}</span>
               </td>
               <td>{{ price }}</td>
             </tr>
