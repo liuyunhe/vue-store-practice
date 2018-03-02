@@ -14,20 +14,21 @@ import ccc from '../page/userchild.vue'
 Vue.use(Router)
 
 export default new Router({
-  mode:'history',
+  // mode:'history',
+  base:'/vue-store-practice/',
   routes: [
     {
-      path: './',
+      path: '/',
       name: 'IndexPage',
       component: IndexPage
     },
     {
-      path: './orderList',
+      path: '/orderList',
       name: 'orderList',
       component: OrderList
     },
     {
-      path: './detail',
+      path: '/detail',
       name: 'Detail',
       redirect:'detail/count',
       component: Detail,
@@ -51,12 +52,12 @@ export default new Router({
       ]
     },
     {
-      path: './datePicker',
+      path: '/datePicker',
       name: 'datePicker',
       component: DatePicker
     },
     {
-      path: './user/:id',
+      path: '/user/:id',
       name: 'User',
       component:User,
       props:true,

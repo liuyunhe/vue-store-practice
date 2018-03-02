@@ -3,7 +3,7 @@
       <!--头部-->
       <div class="app-head">
         <div class="app-head-inner">
-          <router-link :to="{path:'./'}">
+          <router-link :to="{path:'/'}">
             <img src="../assets/logo.png" alt="" width="50" style="margin-top: 20px">
           </router-link>
 
