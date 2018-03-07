@@ -31,7 +31,7 @@
         methods:{
           choosenSelection(index) {
             this.nowIndex = index;
-            this.$emit('on-change',this.selections[index])
+            this.$emit('on-change',this.selections[this.nowIndex])
           }
         }
     }
