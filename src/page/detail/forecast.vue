@@ -10,7 +10,7 @@
           购买数量：
         </div>
         <div class="sales-board-line-right">
-          <v-counter :max="100" :min="10"></v-counter>
+          <v-counter :max="10" :min="5" @on-change="onParamChange('buyNumber',$event)"></v-counter>
         </div>
       </div>
       <div class="sales-board-line">
@@ -18,7 +18,7 @@
           媒介：
         </div>
         <div class="sales-board-line-right">
-          <v-mul-chooser :selections="versionList"></v-mul-chooser>
+          <v-mul-chooser :selections="versionLists" @on-change="onParamChange('versionList',$event)"></v-mul-chooser>
         </div>
       </div>
       <div class="sales-board-line">
@@ -26,7 +26,7 @@
           有效时间：
         </div>
         <div class="sales-board-line-right">
-          一年
+          <my-vue-datepicker-local v-model="timeRange" clearable></my-vue-datepicker-local>
         </div>
       </div>
       <div class="sales-board-line">
@@ -34,7 +34,7 @@
           总价：
         </div>
         <div class="sales-board-line-right">
-          500 元
+          {{ price }} 元
         </div>
       </div>
       <div class="sales-board-line">
@@ -66,13 +66,18 @@
 <script>
     import VCounter from '../../components/base/counter.vue'
     import VMulChooser from '../../components/base/multiplyChooser.vue'
+    import VueDatepickerLocal from '../../components/base/datepicker.vue'
+    import _ from 'lodash'
     export default {
         components:{
-          VCounter,VMulChooser
+          VCounter,VMulChooser,MyVueDatepickerLocal:VueDatepickerLocal
         },
         data() {
             return {
-              versionList: [
+              time: new Date(),
+              timeRange: '',
+              price:0,
+              versionLists: [
                 {
                   label: '纸质报告',
                   value: 0
@@ -89,8 +94,32 @@
                   label: '邮件',
                   value: 3
                 }
-              ]
+              ],
+              buyNumber:5,
+              versionList:[],
             }
+        },
+        methods:{
+          onParamChange(name,value) {
+            this[name] = value;
+            this.getPrice();
+          },
+          getPrice() {
+            let versionListArray = _.map(this.versionList,function (item) {
+              return item.label
+            })
+            let reqParams = {
+              buyNumber : this.buyNumber,
+              versionList : versionListArray.join(','),
+              validTime : this.timeRange,
+            }
+            console.log(reqParams)
+            this.$http.post('/api/getPrice',reqParams)
+              .then((res)=>{
+//              console.log(res.data.getPrice.amount)
+                this.price = res.data.getPrice.amount
+              })
+          }
         },
 
     }
