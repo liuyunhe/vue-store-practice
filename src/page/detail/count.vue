@@ -392,7 +392,7 @@
                 this.isShowPayDialog = false;
                 this.isShowCheckOrder = true;
               },(err) =>{
-
+                this.isShowErrDialog = true
               })
           },
           hideCheckOrderDialog(){
@@ -400,6 +400,7 @@
           },
           hideErrDialog() {
             this.isShowErrDialog = false;
+            this.$router.push({path: '/orderList'});
           }
         },
         mounted() {

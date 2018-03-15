@@ -415,6 +415,7 @@
         },
         hideErrDialog() {
           this.isShowErrDialog = false;
+          this.$router.push({path: '/orderList'})
         }
       },
       mounted() {
