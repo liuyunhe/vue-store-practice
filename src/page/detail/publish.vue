@@ -10,7 +10,10 @@
           购买数量：
         </div>
         <div class="sales-board-line-right">
-          <v-counter :max="100" :min="20"></v-counter>
+          <v-counter
+            :max="100" :min="20"
+            @on-change="onParamChange('buyNumber',$event)"
+          ></v-counter>
         </div>
       </div>
       <div class="sales-board-line">
@@ -18,7 +21,10 @@
           行业：
         </div>
         <div class="sales-board-line-right">
-          <v-selection :selections="tradeList"></v-selection>
+          <v-selection
+            :selections="tradeList"
+            @on-change="onParamChange('trade',$event)"
+          ></v-selection>
         </div>
       </div>
       <div class="sales-board-line">
@@ -26,7 +32,10 @@
           产品版本：
         </div>
         <div class="sales-board-line-right">
-          <v-mul-chooser :selections="versionList"></v-mul-chooser>
+          <v-mul-chooser
+            :selections="versionList"
+            @on-change="onParamChange('versions',$event)"
+          ></v-mul-chooser>
         </div>
       </div>
       <div class="sales-board-line">
@@ -42,13 +51,13 @@
           总价：
         </div>
         <div class="sales-board-line-right">
-          500 元
+          {{ price }} 元
         </div>
       </div>
       <div class="sales-board-line">
         <div class="sales-board-line-left">&nbsp;</div>
         <div class="sales-board-line-right">
-          <div class="button">
+          <div class="button" @click="payClick">
             立即购买
           </div>
         </div>
@@ -248,6 +257,35 @@
         </tbody>
       </table>
     </div>
+    <my-dialog :is-show="isShowPayDialog" @on-close="hidePayDialog">
+      <table class="buy-dialog-table">
+        <tr>
+          <th>购买数量</th>
+          <th>行业</th>
+          <th>产品版本</th>
+          <th>有效时间</th>
+          <th>总价</th>
+        </tr>
+        <tr>
+          <td>{{ buyNumber }}</td>
+          <td>{{ trade.label }}</td>
+          <td>
+            <span v-for="(item,index) in versions">{{!index ?  item.label :',' + item.label}}</span>
+          </td>
+          <td>{{ validTime }}</td>
+          <td>{{ price }}</td>
+        </tr>
+      </table>
+      <h3 class="buy-dialog-title">请选择银行</h3>
+      <bank-chooser @on-change="onChangeBanks"></bank-chooser>
+      <div class="button buy-dialog-btn" @click="confirmBuy">
+        确认购买
+      </div>
+    </my-dialog>
+    <my-dialog :is-show="isShowErrDialog" @on-close="hideErrDialog">
+      支付失败！
+    </my-dialog>
+    <check-order :is-show-check-dialog="isShowCheckOrder" :order-id="orderId" @on-close-check-dialog="hideCheckOrderDialog"></check-order>
   </div>
 </template>
 
@@ -255,9 +293,18 @@
     import VSelection from '../../components/base/selection'
     import VCounter from '../../components/base/counter'
     import VMulChooser from '../../components/base/multiplyChooser'
+    import Dialog from '../../components/base/dialog.vue'
+    import BankChooser from '../../components/bankChooser.vue'
+    import CheckOrder from '../../components/checkDialog.vue'
+    import _ from 'lodash'
     export default {
         components:{
-          VSelection,VCounter,VMulChooser
+          VSelection,
+          VCounter,
+          VMulChooser,
+          myDialog:Dialog,
+          BankChooser,
+          CheckOrder,
         },
         data() {
             return {
@@ -300,9 +347,106 @@
                   label: '专家版',
                   value: 3
                 }
-              ]
+              ],
+              price:0,
+              buyNumber:20,
+              trade:{},
+              versions:[],
+              validTime:'半年',
+              isShowPayDialog:false,
+              bankId:null,
+              orderId:null,
+              isShowCheckOrder:false,
+              isShowErrDialog:false
             }
         },
-
+      methods:{
+        onParamChange(attr,val) {
+          this[attr] = val
+//          console.log(attr,this[attr])
+          this.getPrice();
+        },
+        getPrice() {
+          let buyVersionsArray = _.map(this.versions,(item)=>{
+            return item.label
+          })
+          let reqParams = {
+            buyNumber:this.buyNumber,
+            trade:this.trade.label,
+            versions:buyVersionsArray.join(','),
+            validTime:this.validTime,
+          }
+          this.$http.post('/api/getPrice',reqParams)
+            .then((res)=>{
+//              console.log(res.data.getPrice.amount)
+              this.price = res.data.getPrice.amount
+            })
+        },
+        confirmBuy() {
+          let buyVersionsArray = _.map(this.versions,(item)=>{
+            return item.label
+          })
+          let reqParams = {
+            buyNumber:this.buyNumber,
+            trade:this.trade.label,
+            versions:buyVersionsArray.join(','),
+            validTime:this.validTime,
+          }
+          this.$http.post('/api/createOrder',reqParams)
+            .then((res)=>{
+              this.orderId = res.data.createOrder.orderId;
+              this.isShowPayDialog = false
+              this.isShowCheckOrder = true
+            },(err)=>{
+              this.isShowErrDialog = true
+            })
+        },
+        hidePayDialog() {
+          this.isShowPayDialog = false
+        },
+        onChangeBanks(bankObj) {
+          this.bankId = bankObj.id;
+        },
+        payClick() {
+          this.isShowPayDialog = true
+        },
+        hideCheckOrderDialog() {
+          this.isShowCheckOrder = false;
+        },
+        hideErrDialog() {
+          this.isShowErrDialog = false;
+        }
+      },
+      mounted() {
+        this.buyNumber = 20;
+        this.trade = this.tradeList[0];
+        this.versions = [this.versionList[0]];
+        this.validTime = '半年'
+        this.getPrice();
+      }
     }
 </script>
+<style scoped>
+  .buy-dialog-title {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  .buy-dialog-btn {
+    margin-top: 20px;
+  }
+  .buy-dialog-table {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .buy-dialog-table td,
+  .buy-dialog-table th{
+    border: 1px solid #e3e3e3;
+    text-align: center;
+    padding: 5px 0;
+  }
+  .buy-dialog-table th {
+    background: #4fc08d;
+    color: #fff;
+    border: 1px solid #4fc08d;
+  }
+</style>
