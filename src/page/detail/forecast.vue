@@ -40,7 +40,7 @@
       <div class="sales-board-line">
         <div class="sales-board-line-left">&nbsp;</div>
         <div class="sales-board-line-right">
-          <div class="button">
+          <div class="button" @click="payClick">
             立即购买
           </div>
         </div>
@@ -54,6 +54,34 @@
         作为预测分析领域的专家，埃里克·西格尔博士深谙预测分析界已经实现和正在发生的事情、面临的问题和将来可能的前景。在《大数据预测》一书中，他结合预测分析的应用实例，对其进行了深入、细致且全面的解读。
         关于预测分析，你想了解的全部，你的生活以及这个世界会因为预测分析改变到什么程度，《大数据预测》都会告诉你。</p>
     </div>
+    <my-dialog :is-show="isShowPayDialog" @on-close="hidePayDialog">
+      <table class="buy-dialog-table">
+        <tr>
+          <th>购买数量</th>
+          <th>媒介</th>
+          <th>有效时间</th>
+          <th>总价</th>
+        </tr>
+        <tr>
+          <td>{{ buyNumber }}</td>
+          <td>
+            <span v-for="(item,index) in versionList">{{!index ?  item.label :',' + item.label}}</span>
+          </td>
+          <td>{{ timeRange}}</td>
+
+          <td>{{ price }}</td>
+        </tr>
+      </table>
+      <h3 class="buy-dialog-title">请选择银行</h3>
+      <bank-chooser @on-change="onChangeBanks"></bank-chooser>
+      <div class="button buy-dialog-btn" @click="confirmBuy">
+        确认购买
+      </div>
+    </my-dialog>
+    <my-dialog :is-show="isShowErrDialog" @on-close="hideErrDialog">
+      支付失败！
+    </my-dialog>
+    <check-order :is-show-check-dialog="isShowCheckOrder" :order-id="orderId" @on-close-check-dialog="hideCheckOrderDialog"></check-order>
   </div>
 </template>
 
@@ -67,10 +95,18 @@
     import VCounter from '../../components/base/counter.vue'
     import VMulChooser from '../../components/base/multiplyChooser.vue'
     import VueDatepickerLocal from '../../components/base/datepicker.vue'
+    import Dialog from '../../components/base/dialog.vue'
+    import BankChooser from '../../components/bankChooser.vue'
+    import CheckOrder from '../../components/checkDialog.vue'
     import _ from 'lodash'
     export default {
         components:{
-          VCounter,VMulChooser,MyVueDatepickerLocal:VueDatepickerLocal
+          VCounter,
+          VMulChooser,
+          MyVueDatepickerLocal:VueDatepickerLocal,
+          myDialog:Dialog,
+          BankChooser,
+          CheckOrder
         },
         data() {
             return {
@@ -97,6 +133,11 @@
               ],
               buyNumber:5,
               versionList:[],
+              isShowPayDialog:false,
+              bankId:null,
+              orderId:null,
+              isShowCheckOrder:false,
+              isShowErrDialog:false
             }
         },
         methods:{
@@ -119,8 +160,72 @@
 //              console.log(res.data.getPrice.amount)
                 this.price = res.data.getPrice.amount
               })
+          },
+          confirmBuy() {
+            let versionListArray = _.map(this.versionList,function (item) {
+              return item.label
+            })
+            let reqParams = {
+              buyNumber : this.buyNumber,
+              versionList : versionListArray.join(','),
+              validTime : this.timeRange,
+              bankId:this.bankId
+            }
+            console.log(reqParams)
+            this.$http.post('/api/createOrder',reqParams)
+              .then((res)=>{
+                this.orderId = res.data.createOrder.orderId;
+                this.isShowPayDialog = false
+                this.isShowCheckOrder = true
+              },(err)=>{
+                this.isShowErrDialog = true
+              })
+          },
+          payClick() {
+            this.isShowPayDialog = true
+          },
+          hidePayDialog() {
+            this.isShowPayDialog = false
+          },
+          onChangeBanks(bankObj) {
+            this.bankId = bankObj.id;
+          },
+          hideErrDialog() {
+            this.isShowErrDialog = false;
+          },
+          hideCheckOrderDialog() {
+            this.isShowCheckOrder = false;
           }
         },
+        mounted() {
+          this.buyNumber = 5;
+          this.versionList = [];
+          this.getPrice();
+        }
 
     }
 </script>
+<style scoped>
+  .buy-dialog-title {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  .buy-dialog-btn {
+    margin-top: 20px;
+  }
+  .buy-dialog-table {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .buy-dialog-table td,
+  .buy-dialog-table th{
+    border: 1px solid #e3e3e3;
+    text-align: center;
+    padding: 5px 0;
+  }
+  .buy-dialog-table th {
+    background: #4fc08d;
+    color: #fff;
+    border: 1px solid #4fc08d;
+  }
+</style>
