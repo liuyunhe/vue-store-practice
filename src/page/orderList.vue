@@ -19,20 +19,25 @@
           <input type="text" v-model.lazy="inputQuery" class="order-query">
         </div>
       </div>
+      
+
       <div class="order-list-table">
         <table>
           <tr>
             <th
-              v-for="head in tableHeads"
-              @click="changeOrder(head)"
+              v-for="head in userHeads"
+              @click="changeUserOrder(head)"
               :class="{active:head.active}"
             >{{ head.label }}</th>
           </tr>
-          <tr v-for="item in tableData">
-            <td v-for="head in tableHeads">{{ item[head.key] }}</td>
+          <tr v-for="item in user">
+            <td v-for="head in userHeads">{{ head.key == 'id' ? '13800138000'+ item[head.key]:item[head.key]}}</td>
           </tr>
         </table>
       </div>
+
+
+
     </div>
     <my-dialog :is-show="isShow" @on-close="closeDialog">结束时间不能小于开始时间</my-dialog>
   </div>
@@ -43,6 +48,7 @@
   import VDatePicked from '../components/base/datepicker.vue'
   import MyDialog from '../components/base/dialog.vue'
   import _ from 'lodash'
+  import Axios from 'axios'
   export default {
     components:{
       VSelection,VDatePicked,MyDialog
@@ -105,7 +111,33 @@
           ],
           tableData:[],
           currentOrder:'desc',
-
+          user:[],
+          userHeads:[
+            {
+              label:'订单号',
+              key:'id'
+            },
+            {
+              label:'用户名',
+              key:'username'
+            },
+            {
+              label:'姓名',
+              key:'name'
+            },
+            {
+              label:'电话号码',
+              key:'phone'
+            },
+            {
+              label:'电邮',
+              key:'email'
+            },
+            {
+              label:'网址',
+              key:'website'
+            }
+          ],
         }
     },
     watch:{
@@ -157,12 +189,38 @@
         }
         this.tableData = _.orderBy(this.tableData,headItem.key,this.currentOrder)
       },
+      changeUserOrder(headItem) {
+        this.userHeads.map((item) => {
+          item.active = false
+          return item
+        })
+        headItem.active = true;
+        if(this.currentUserOrder == "desc"){
+          this.currentUserOrder = "asc";
+        }
+        else if(this.currentUserOrder == "asc"){
+          this.currentUserOrder = "desc";
+        }
+        this.user = _.orderBy(this.user,headItem.key,this.currentUserOrder)
+      },
       closeDialog(){
         this.isShow = false;
+      },
+      aixos() {
+        var _this = this
+        Axios.get('https://jsonplaceholder.typicode.com/users')
+          .then(function (response) {
+            _this.user = response.data;
+            console.log(_this.user)
+          })
+          .catch(function (err) {
+            console.log(err);
+          });
       }
     },
     mounted() {
       this.getTableData();
+      this.aixos();
       if(this.tableData.length == 0){
         this.tableData =  [
           {
