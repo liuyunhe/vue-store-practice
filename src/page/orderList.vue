@@ -19,7 +19,7 @@
           <input type="text" v-model.lazy="inputQuery" class="order-query">
         </div>
       </div>
-      
+
 
       <div class="order-list-table">
         <table>
@@ -35,8 +35,6 @@
           </tr>
         </table>
       </div>
-
-
 
     </div>
     <my-dialog :is-show="isShow" @on-close="closeDialog">结束时间不能小于开始时间</my-dialog>
