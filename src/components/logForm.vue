@@ -30,7 +30,7 @@
 </template>
 
 <script>
-
+    import Axios from 'axios'
     export default {
       data() {
           return {
@@ -81,13 +81,23 @@
             this.errorText = '部分选项未通过'
           }else{
             this.errorText = '';
-            this.$http.get('/api/login')
-              .then((res) => {
-                console.log(res.data.login);
-                this.$emit('has-log',res.data.login)
-              }, (err) => {
-                console.log(err)
+//            this.$http.get('https://jsonplaceholder.typicode.com/users')
+//              .then((res) => {
+//                console.log(res.data.login);
+//                this.$emit('has-log',res.data.login)
+//              }, (err) => {
+//                console.log(err)
+//              });
+            var _this = this;
+            Axios.get('https://jsonplaceholder.typicode.com/users')
+              .then(function (response) {
+                _this.user = response.data[Math.floor(Math.random() * response.data.length)];
+                console.log(_this.user)
+                _this.$emit('has-log',_this.user)
               })
+              .catch(function (err) {
+                console.log(err);
+              });
           }
           console.log(this.usernameMode + '/' + this.passwordMode)
         },
