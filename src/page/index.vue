@@ -50,6 +50,7 @@
 
 <script>
     import slideShow from '../components/slideShow'
+    import bus from '../eventsCenter/bus'
     export default {
       components:{
         slideShow
@@ -65,7 +66,7 @@
       },
       data() {
         return {
-          invTime: 2000,
+          invTime: 3000,
           slides: [
             {
               src: require('../assets/slideShow/pic1.jpg'),
