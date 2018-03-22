@@ -9,6 +9,7 @@
 </template>
 
 <script>
+    import bus from '../../eventsCenter/bus'
     export default {
       props:{
         min:{
@@ -19,6 +20,9 @@
           type:Number,
           default:5
         },
+      },
+      created() {
+        bus.$on('choose',this.choose)
       },
       data() {
           return {
@@ -31,6 +35,9 @@
         }
       },
       methods:{
+        choose(value) {
+          console.log('您点击了' + value + ';这行代码在counter组件执行！')
+        },
         minus() {
           if(this.number <= this.min){
             return
@@ -55,6 +62,9 @@
           }
           this.number = fix
         }
+      },
+      beforeDestroy() {
+        bus.$off('choose',this.choose)
       }
     }
 </script>

@@ -11,7 +11,7 @@
 </template>
 
 <script>
-
+    import bus from '../../eventsCenter/bus'
     export default {
         name: "",
         props:{
@@ -31,7 +31,8 @@
         methods:{
           choosenSelection(index) {
             this.nowIndex = index;
-            this.$emit('on-change',this.selections[this.nowIndex])
+            bus.$emit('choose','choose');
+            this.$emit('on-change',this.selections[this.nowIndex]);
           }
         }
     }
