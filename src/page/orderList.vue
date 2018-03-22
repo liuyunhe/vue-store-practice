@@ -205,7 +205,7 @@
         this.isShow = false;
       },
       aixos() {
-        var _this = this
+        var _this = this;
         Axios.get('https://jsonplaceholder.typicode.com/users')
           .then(function (response) {
             _this.user = response.data;
