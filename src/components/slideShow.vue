@@ -22,7 +22,7 @@
 </template>
 
 <script>
-export default {
+  export default {
 //  父组件传入参数
   props:{
     slides:{
@@ -54,7 +54,6 @@ export default {
       }else {
         return this.nowIndex +1;
       }
-
     }
   },
   methods:{
@@ -65,7 +64,6 @@ export default {
         this.nowIndex = index;
         this.$emit('onChange',index)
       },10)
-
     },
     runIntv() {
       this.intvId = setInterval(() => {
@@ -92,10 +90,12 @@ export default {
   }
   .slide-trans-enter {
     transform: translateX(900px);
+    /*opacity: 1;*/
   }
   .slide-trans-old-leave-active {
     transition: all .5s;
     transform: translateX(-900px);
+    /*opacity: 0;*/
   }
   .slide-show {
     position: relative;
