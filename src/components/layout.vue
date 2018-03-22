@@ -30,7 +30,7 @@
       </div>
       <!--尾部-->
       <div class="app-foot">
-        <p>© 2016 fishenal MIT</p>
+        <p>© 2018 Shepard All Rights Reserved</p>
       </div>
       <my-dialog :is-show="isShowLogDialog" @on-close="closeDialog('isShowLogDialog')" >
         <log-from @has-log="onSuccessLog"></log-from>
