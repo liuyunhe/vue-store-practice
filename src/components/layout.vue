@@ -5,6 +5,7 @@
         <div class="app-head-inner">
           <router-link :to="{path:'/'}">
             <img src="../assets/logo.png" alt="" width="50" style="margin-top: 20px">
+            <span style="color: #fff;font-size: 30px;position: relative;bottom: 10px;">2.0 商城系统</span>
           </router-link>
 
           <div class="head-nav">
