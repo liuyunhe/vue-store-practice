@@ -10,7 +10,7 @@
             <h3>{{ product.title }}</h3>
             <ul>
               <li v-for="item in product.list">
-                <a :href="item.url">{{ item.name }}</a>
+                <a :href="item.url" target="_blank">{{ item.name }}</a>
                 <span v-if="item.hot" class="hot-tag">HOT</span>
               </li>
             </ul>
@@ -19,7 +19,7 @@
 
         </div>
         <div class="index-left-block lastest-news">
-          <h2>最新消息</h2>
+          <h2>友情链接</h2>
           <ul>
             <li v-for="item in newsList">
               <a class="new-item" :href="item.url"  target="_blank">{{ item.title }}</a>
@@ -91,47 +91,47 @@
           ],
           productList:{
             pc:{
-              title:'PC产品',
+              title:'暴雪产品',
               list:[
                 {
-                  name: '数据统计',
+                  name: '星际争霸重置版',
                   url: 'http://starcraft.com'
                 },
                 {
-                  name: '数据预测',
-                  url: 'http://warcraft.com'
+                  name: '魔兽世界',
+                  url: 'https://www.wowchina.com/zh-cn/'
                 },
                 {
-                  name: '流量分析',
-                  url: 'http://overwatch.com',
+                  name: '星际争霸2',
+                  url: 'http://sc2.blizzard.cn/',
                   hot: true
                 },
                 {
-                  name: '广告发布',
-                  url: 'http://hearstone.com'
+                  name: '守望先锋',
+                  url: 'http://ow.blizzard.cn/home'
                 }
               ]
             },
             app:{
-              title:'手机应用类',
+              title:'生活应用类',
               last:true,
               list:[
                 {
-                  name: '91助手',
+                  name: '微信',
                   url: 'http://weixin.com'
                 },
                 {
-                  name: '产品助手',
-                  url: 'http://twitter.com',
+                  name: '淘宝',
+                  url: 'https://www.taobao.com/',
                   hot: true
                 },
                 {
-                  name: '智能地图',
-                  url: 'http://maps.com'
+                  name: '京东',
+                  url: 'https://www.jd.com/'
                 },
                 {
-                  name: '团队语音',
-                  url: 'http://phone.com'
+                  name: '美团',
+                  url: 'https://www.meituan.com'
                 }
               ]
             }
@@ -177,10 +177,11 @@
       mounted() {
         if(this.newsList.length == 0){
           this.newsList =[
-            {"id":1,"title":"新闻条目1新闻条目1新闻条目1新闻条目1","url":"http://starcraft.com"},
-            {"id":2,"title":"新闻条目2新闻条目2新闻条目2新闻条目2","url":"http://warcraft.com"},
-            {"id":3,"title":"新闻条3新闻条3新闻条3","url":"http://overwatch.com"},
-            {"id":4,"title":"新闻条4广告发布","url":"http://hearstone.com"}]
+            {"id":1,"title":"腾讯网","url":"http://www.qq.com/"},
+            {"id":2,"title":"网易163","url":"http://www.163.com/"},
+            {"id":3,"title":"凤凰网","url":"http://www.ifeng.com/"},
+            {"id":4,"title":"搜狐网","url":"http://www.sohu.com/"}
+          ]
         }
       }
     }

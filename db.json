@@ -1,25 +1,9 @@
 {
   "getNewsList": [
-    {
-      "id": 1,
-      "title": "新闻条目1新闻条目1新闻条目1新闻条目1",
-      "url": "http://starcraft.com"
-    },
-    {
-      "id": 2,
-      "title": "新闻条目2新闻条目2新闻条目2新闻条目2",
-      "url": "http://warcraft.com"
-    },
-    {
-      "id": 3,
-      "title": "新闻条3新闻条3新闻条3",
-      "url": "http://overwatch.com"
-    },
-    {
-      "id": 4,
-      "title": "新闻条4广告发布",
-      "url": "http://hearstone.com"
-    }
+    {"id":1,"title":"腾讯网","url":"http://www.qq.com/"},
+    {"id":2,"title":"网易163","url":"http://www.163.com/"},
+    {"id":3,"title":"凤凰网","url":"http://www.ifeng.com/"},
+    {"id":4,"title":"搜狐网","url":"http://www.sohu.com/"}
   ],
   "login": {
     "username": "yudongdong",
