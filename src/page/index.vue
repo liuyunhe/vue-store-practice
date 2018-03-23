@@ -22,7 +22,7 @@
           <h2>最新消息</h2>
           <ul>
             <li v-for="item in newsList">
-              <a class="new-item" :href="item.url">{{ item.title }}</a>
+              <a class="new-item" :href="item.url"  target="_blank">{{ item.title }}</a>
             </li>
           </ul>
         </div>
