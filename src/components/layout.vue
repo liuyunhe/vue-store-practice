@@ -24,9 +24,9 @@
       </div>
       <!--内容-->
       <div class="app-content">
-        <keep-alive>
+        <!--<keep-alive>-->
           <router-view/>
-        </keep-alive>
+        <!--</keep-alive>-->
       </div>
       <!--尾部-->
       <div class="app-foot">
