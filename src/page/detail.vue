@@ -57,6 +57,9 @@
             return this.imgMap[this.$route.path]
           }
         },
+//        mounted() {
+//          this.$root.alertTips()
+//        }
     }
 </script>
 <style>
