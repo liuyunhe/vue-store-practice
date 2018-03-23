@@ -12,5 +12,10 @@ new Vue({
   el: '#app',
   router,
   template: '<Layout/>',
-  components: { Layout }
+  components: { Layout },
+  // data: {                    $root增加方法
+  //   alertTips() {
+  //     alert('111')
+  //   }
+  // }
 })
