@@ -25,7 +25,9 @@
       <!--内容-->
       <div class="app-content">
         <!--<keep-alive>-->
+        <transition name="fade" mode="out-in">
           <router-view/>
+        </transition>
         <!--</keep-alive>-->
       </div>
       <!--尾部-->
@@ -102,6 +104,12 @@
     font-family: "Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Hiragino Sans GB W3","Microsoft YaHei UI","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
     font-size: 14px;
     color: #444;
+  }
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .5s
+  }
+  .fade-enter, .fade-leave-to /* .fade-leave-active in below version 2.1.8 */ {
+    opacity: 0
   }
   .app-head {
     background: #363636;
