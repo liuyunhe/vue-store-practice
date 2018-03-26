@@ -177,9 +177,9 @@
       mounted() {
         if(this.newsList.length == 0){
           this.newsList =[
-            {"id":1,"title":"腾讯网","url":"http://www.qq.com/"},
-            {"id":2,"title":"网易163","url":"http://www.163.com/"},
-            {"id":3,"title":"凤凰网","url":"http://www.ifeng.com/"},
+            {"id":1,"title":"腾讯网腾讯网腾讯网","url":"http://www.qq.com/"},
+            {"id":2,"title":"网易163网易163网易163","url":"http://www.163.com/"},
+            {"id":3,"title":"凤凰网凤凰网","url":"http://www.ifeng.com/"},
             {"id":4,"title":"搜狐网","url":"http://www.sohu.com/"}
           ]
         }
