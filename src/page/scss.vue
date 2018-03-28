@@ -1,13 +1,11 @@
 <template>
-  <div>
-      <div>{{ username }}</div>
+  <div class="aaaa">
+      <p>{{ username }}</p>
   </div>
 </template>
 
-<style>
-    body {
-
-    }
+<style lang="scss" scoped>
+    @import "../scss/scss";
 </style>
 
 <script>
