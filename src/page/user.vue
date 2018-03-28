@@ -27,7 +27,10 @@
           }
       },
       mounted() {
-        this.username = this.id;
+        this.$nextTick(()=>{
+          this.username = this.id;
+        })
+        
 //        注意：如果提供了 path，params 会被忽略，上述例子中的 query 并不属于这种情况。
 //        取而代之的是下面例子的做法，你需要提供路由的 name 或手写完整的带有参数的 path：
 //        const userId = 123
