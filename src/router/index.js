@@ -9,7 +9,7 @@ import Publish from  '../page/detail/publish.vue'
 import OrderList from '../page/orderList.vue'
 import DatePicker from '../page/datePicker.vue'
 import User from '../page/user.vue'
-import ccc from '../page/userchild.vue'
+import scss from '../page/scss.vue'
 
 Vue.use(Router)
 
@@ -63,9 +63,9 @@ export default new Router({
       props:true,
       children:[
         {
-          path: 'ccc',
-          name: 'ccc',
-          component: ccc
+          path: 'scss',
+          name: 'scss',
+          component: scss
         }
       ]
     },
