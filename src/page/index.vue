@@ -70,7 +70,7 @@
           slides: [
             {
               src: require('../assets/slideShow/pic1.jpg'),
-              title: '史诗钥石地下城全球邀请赛：准备迎接“计时赛”！',
+              title: '《奔跑吧！脚男》第二季全面升级 11月27日震撼播出！',
               href: '/detail/wow'
             },
             {
@@ -87,7 +87,12 @@
               src: require('../assets/slideShow/pic4.jpg'),
               title: '女巫森林-邪恶蠢蠢欲动！',
               href: '/detail/hs'
-            }
+            },
+            {
+              src: require('../assets/slideShow/pic5.jpg'),
+              title: '史诗钥石地下城全球邀请赛：准备迎接“计时赛”！',
+              href: '/detail/wow'
+            },
           ],
           productList:{
             pc:{
