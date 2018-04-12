@@ -1,8 +1,14 @@
 <template>
   <div class="sales-board">
+    <div class="video-wrap">
+      <img src="../../assets/wow-logo.png" alt="" width="200" class="img">
+      <div class="context">
+        <div class="title">购买《争霸艾泽拉斯》数字典藏礼包</div>
+        <div class="content">战争一触即发，联盟和部落迫切需要新的盟友。购买《争霸艾泽拉斯》数字典藏礼包，解锁四个全新同盟种族，全力备战即将到来的腥风血雨！</div>
+      </div>
+      <video class="VideoPane-video" :src="videoSrc" :data-src="videoSrc" loop="loop" muted="muted" autoplay="autoplay" playsinline="playsinline"></video>
+    </div>
     <div class="sales-board-intro">
-      <h2>购买《争霸艾泽拉斯》数字典藏礼包</h2>
-      <p>战争一触即发，联盟和部落迫切需要新的盟友。购买《争霸艾泽拉斯》数字典藏礼包，解锁四个全新同盟种族，全力备战即将到来的腥风血雨！</p>
     </div>
     <div class="sales-board-form">
       <div class="sales-board-line">
@@ -296,6 +302,7 @@
         },
         data() {
             return {
+              videoSrc:"https://cms-origin-cn.battle.net/cms/template_resource/qg/QGAAU93T260P1523240956071.mp4",
               time: new Date(),
               emptyRange: [],
               price:0,
@@ -407,6 +414,34 @@
     }
 </script>
 <style scoped>
+  .video-wrap{
+    position: relative;
+  }
+  .video-wrap .img{
+    position: absolute;
+    display: block;
+    top: 20px;
+    left: 30px;
+  }
+  .video-wrap .context{
+    position: absolute;
+    margin-left: 30px;
+    top: 400px;
+  }
+  .video-wrap .context .title{
+    font-size: 40px;
+    font-weight: bold;
+    color: #fff;
+  }
+  .video-wrap .context .content{
+    width: 650px;
+    margin-top: 20px;
+    font-size: 20px;
+    color: #ebdec2;
+  }
+  .VideoPane-video{
+    width: 980px;
+  }
   .buy-dialog-title {
     font-size: 16px;
     font-weight: bold;
