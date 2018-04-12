@@ -4,8 +4,7 @@
       <div class="app-head">
         <div class="app-head-inner">
           <router-link :to="{path:'/'}">
-            <img src="../assets/logo.png" alt="" width="50" style="margin-top: 20px">
-            <span style="color: #fff;font-size: 30px;position: relative;bottom: 10px;">2.0 商城系统</span>
+            <img src="../assets/bnet-default-cn.png" alt="" height="60" style="margin-top: 15px">
           </router-link>
 
           <div class="head-nav">
