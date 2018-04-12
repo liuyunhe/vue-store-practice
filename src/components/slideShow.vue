@@ -3,7 +3,7 @@
     <div class="slide-img">
       <router-link :to="{path:slides[nowIndex].href}" >
         <transition name="slide-trans">
-          <img v-if="isShow" :src="slides[nowIndex].src" alt="">
+          <img v-if="isShow" :src="slides[nowIndex].src" alt="" width="900" height="506">
         </transition>
         <transition name="slide-trans-old">
           <img v-if="!isShow" :src="slides[nowIndex].src" alt="">
@@ -86,16 +86,16 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   .slide-trans-enter-active {
-    transition: all .5s;
+    transition: all .8s;
   }
   .slide-trans-enter {
-    transform: translateX(900px);
-    /*opacity: 1;*/
+    /*transform: translateX(900px);*/
+    opacity: 1;
   }
   .slide-trans-old-leave-active {
-    transition: all .5s;
-    transform: translateX(-900px);
-    /*opacity: 0;*/
+    transition: all .8s;
+    /*transform: translateX(-900px);*/
+    opacity: 0;
   }
   .slide-show {
     position: relative;
@@ -107,12 +107,12 @@
   .slide-show h2 {
     position: absolute;
     width: 100%;
-    height: 100%;
     color: #fff;
     background: #000;
     opacity: .5;
     bottom: 0;
     height: 30px;
+    line-height: 30px;
     text-align: left;
     padding-left: 15px;
   }
