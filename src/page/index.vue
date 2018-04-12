@@ -3,7 +3,7 @@
     <div class="index-wrap">
       <div class="index-left">
         <div class="index-left-block">
-          <h2>全部产品</h2>
+          <h2>人气产品</h2>
 
           <!--循环-->
           <template v-for="product in productList">
@@ -19,7 +19,7 @@
 
         </div>
         <div class="index-left-block lastest-news">
-          <h2>友情链接</h2>
+          <h2>支持</h2>
           <ul>
             <li v-for="item in newsList">
               <a class="new-item" :href="item.url"  target="_blank">{{ item.title }}</a>
@@ -70,28 +70,28 @@
           slides: [
             {
               src: require('../assets/slideShow/pic1.jpg'),
-              title: 'xxx1',
-              href: '/detail/analysis'
+              title: '史诗钥石地下城全球邀请赛：准备迎接“计时赛”！',
+              href: '/detail/wow'
             },
             {
               src: require('../assets/slideShow/pic2.jpg'),
-              title: 'xxx2',
-              href: '/detail/count'
+              title: '暗黑破坏神III》2.6.0版本及全新职业死灵法师现已上线',
+              href: '/detail/d3'
             },
             {
               src: require('../assets/slideShow/pic3.jpg'),
-              title: 'xxx3',
-              href: '/detail/publish'
+              title: '迎接星际周年纪念，庆祝《星际争霸》二十周年！',
+              href: '/detail/sc2'
             },
             {
               src: require('../assets/slideShow/pic4.jpg'),
-              title: 'xxx4',
-              href: '/detail/forecast'
+              title: '女巫森林-邪恶蠢蠢欲动！',
+              href: '/detail/hs'
             }
           ],
           productList:{
             pc:{
-              title:'暴雪产品',
+              title:'暴雪游戏',
               list:[
                 {
                   name: '星际争霸重置版',
@@ -113,25 +113,26 @@
               ]
             },
             app:{
-              title:'生活应用类',
+              title:'电子竞技',
               last:true,
               list:[
                 {
-                  name: '微信',
-                  url: 'http://weixin.com'
+                  name: '守望先锋联赛',
+                  url: 'https://www.overwatchleague.cn/zh-cn/',
                 },
                 {
-                  name: '淘宝',
-                  url: 'https://www.taobao.com/',
-                  hot: true
+                  name: '炉石传说黄金职业联赛',
+                  url: 'http://gold.blizzard.cn/minisite/gold-super-tournament',
                 },
                 {
-                  name: '京东',
-                  url: 'https://www.jd.com/'
+                  name: '星际争霸2黄金职业联赛',
+                  url: 'http://gold.blizzard.cn/minisite/sc2-tournament',
+                  hot : true
                 },
                 {
-                  name: '美团',
-                  url: 'https://www.meituan.com'
+                  name: '魔兽争霸Ⅲ黄金职业联赛',
+                  url: 'http://gold.blizzard.cn/minisite/war3-tournament/',
+                  hot : true
                 }
               ]
             }
@@ -139,31 +140,31 @@
           newsList:[],
           boardList: [
             {
-              title: '开放产品',
-              description: '开放产品是一款开放产品',
+              title: '魔兽世界',
+              description: '购买《争霸艾泽拉斯》数字典藏礼包',
               id: 'car',
-              toKey: 'count',
+              toKey: 'wow',
               saleout: false
             },
             {
-              title: '品牌营销',
-              description: '品牌营销帮助你的产品更好地找到定位',
+              title: '暗黑破坏神3',
+              description: '全新英雄职业-死灵法师-现已上线',
               id: 'earth',
-              toKey: 'analysis',
+              toKey: 'd3',
               saleout: false
             },
             {
-              title: '使命必达',
-              description: '使命必达快速迭代永远保持最前端的速度',
+              title: '星际争霸2',
+              description: '庆祝《星际争霸》二十周年',
               id: 'loud',
-              toKey: 'forecast',
+              toKey: 'sc2',
               saleout: true
             },
             {
-              title: '勇攀高峰',
-              description: '帮你勇闯高峰，到达事业的顶峰',
+              title: '炉石传说',
+              description: '乱斗模式“一切都是命运”现已开放',
               id: 'hill',
-              toKey: 'publish',
+              toKey: 'hs',
               saleout: false
             }
           ]
@@ -177,10 +178,11 @@
       mounted() {
         if(this.newsList.length == 0){
           this.newsList =[
-            {"id":1,"title":"腾讯网腾讯网腾讯网","url":"http://www.qq.com/"},
-            {"id":2,"title":"网易163网易163网易163","url":"http://www.163.com/"},
-            {"id":3,"title":"凤凰网凤凰网","url":"http://www.ifeng.com/"},
-            {"id":4,"title":"搜狐网","url":"http://www.sohu.com/"}
+            {"id":1,"title":"战网通行证","url":"https://www.battlenet.com.cn/zh/"},
+            {"id":2,"title":"暴雪新闻","url":"https://cn.news.blizzard.com/zh-cn/"},
+            {"id":3,"title":"暴雪商城","url":"https://shop.battlenet.com.cn/zh-cn"},
+            {"id":4,"title":"查尔星港","url":"http://s.163.com/"},
+            {"id":5,"title":"艾泽拉斯国家地理","url":"http://bbs.nga.cn/"}
           ]
         }
       }
@@ -244,16 +246,20 @@
     padding-left: 120px;
   }
   .index-board-car .index-board-item-inner{
-    background: url(../assets/images/1.png) no-repeat;
+    background: url(https://shop.battlenet.com.cn/static/1.11.0/images/family-icons/world-of-warcraft.svg) no-repeat;
+    background-size: 100px;
   }
   .index-board-loud .index-board-item-inner{
-    background: url(../assets/images/2.png) no-repeat;
+    background: url(https://shop.battlenet.com.cn/static/1.11.0/images/family-icons/starcraft-ii.svg) no-repeat;
+    background-size: 100px;
   }
   .index-board-earth .index-board-item-inner{
-    background: url(../assets/images/3.png) no-repeat;
+    background: url(https://shop.battlenet.com.cn/static/1.11.0/images/family-icons/diablo-iii.svg) no-repeat;
+    background-size: 100px;
   }
   .index-board-hill .index-board-item-inner{
-    background: url(../assets/images/4.png) no-repeat;
+    background: url(https://shop.battlenet.com.cn/static/1.11.0/images/family-icons/hearthstone.svg) no-repeat;
+    background-size: 100px;
   }
   .index-board-item h2 {
     font-size: 18px;
