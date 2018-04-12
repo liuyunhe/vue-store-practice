@@ -2,7 +2,7 @@
     <div class="detail-wrap">
       <div class="detail-left">
         <div class="product-board">
-          <img :src="productIcon" alt="">
+          <img :src="productIcon" alt="" width="100">
           <ul>
             <!--<li v-for="item in products">{{ item.name }}</li>-->
             <router-link v-for="item in products" :to="{path:item.path}" tag="li" active-class="active">{{ item.name }}</router-link>
@@ -25,32 +25,32 @@
             return {
               products: [
                 {
-                  name: '数据统计',
-                  path: 'count',
+                  name: '魔兽世界',
+                  path: 'wow',
 //                  icon: require('../assets/images/1.png'),
                   active: false
                 },
                 {
-                  name: '数据预测',
-                  path: 'forecast',
+                  name: '星际争霸2',
+                  path: 'sc2',
                   active: false
                 },
                 {
-                  name: '流量分析',
-                  path: 'analysis',
+                  name: '暗黑破坏神3',
+                  path: 'd3',
                   active: false
                 },
                 {
-                  name: '广告发布',
-                  path: 'publish',
+                  name: '炉石传说',
+                  path: 'hs',
                   active: false
                 }
               ],
               imgMap: {
-                '/detail/count': require("../assets/images/1.png"),
-                '/detail/forecast': require("../assets/images/2.png"),
-                '/detail/analysis': require("../assets/images/3.png"),
-                '/detail/publish': require("../assets/images/4.png")
+                '/detail/wow': "https://shop.battlenet.com.cn/static/1.11.0/images/family-icons/world-of-warcraft.svg",
+                '/detail/sc2': "https://shop.battlenet.com.cn/static/1.11.0/images/family-icons/starcraft-ii.svg",
+                '/detail/d3': "https://shop.battlenet.com.cn/static/1.11.0/images/family-icons/diablo-iii.svg",
+                '/detail/hs': "https://shop.battlenet.com.cn/static/1.11.0/images/family-icons/hearthstone.svg"
               }
             }
         },
