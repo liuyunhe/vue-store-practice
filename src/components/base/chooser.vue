@@ -55,8 +55,8 @@
     cursor: pointer;
   }
   .chooser-list li.active {
-    border-color: #4fc08d;
-    background: #4fc08d;
+    border-color: #363636;
+    background: #363636;
     color: #fff;
   }
 </style>

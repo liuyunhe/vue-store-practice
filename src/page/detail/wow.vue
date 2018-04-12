@@ -425,8 +425,8 @@
     padding: 5px 0;
   }
   .buy-dialog-table th {
-    background: #4fc08d;
+    background: #363636;
     color: #fff;
-    border: 1px solid #4fc08d;
+    border: 1px solid #363636;
   }
 </style>

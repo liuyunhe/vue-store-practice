@@ -66,7 +66,7 @@
     cursor: pointer;
   }
   .dialog-close:hover {
-    color: #4fc08d;
+    color: #363636;
   }
 </style>
 

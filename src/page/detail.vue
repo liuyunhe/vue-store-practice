@@ -95,7 +95,7 @@
   }
   .product-board li.active,
   .product-board li:hover {
-    background: #4fc08d;
+    background: #363636;
     color: #fff;
   }
   .product-board li a {
@@ -157,7 +157,7 @@
     margin-top: 20px;
   }
   .sales-board-table th {
-    background: #4fc08d;
+    background: #363636;
     color: #fff;
   }
   .sales-board-table td {

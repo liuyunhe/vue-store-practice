@@ -213,7 +213,7 @@
     margin-bottom: 20px;
   }
   .index-left-block h2 {
-    background: #4fc08d;
+    background: #363636;
     color: #fff;
     padding: 10px 15px;
     margin-bottom: 20px;
