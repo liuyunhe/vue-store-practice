@@ -47,10 +47,10 @@
                 }
               ],
               imgMap: {
-                '/detail/wow': "https://shop.battlenet.com.cn/static/1.11.0/images/family-icons/world-of-warcraft.svg",
-                '/detail/sc2': "https://shop.battlenet.com.cn/static/1.11.0/images/family-icons/starcraft-ii.svg",
-                '/detail/d3': "https://shop.battlenet.com.cn/static/1.11.0/images/family-icons/diablo-iii.svg",
-                '/detail/hs': "https://shop.battlenet.com.cn/static/1.11.0/images/family-icons/hearthstone.svg"
+                '/detail/wow': require('../assets/images/world-of-warcraft.svg'),
+                '/detail/sc2': require('../assets/images/starcraft-ii.svg'),
+                '/detail/d3': require('../assets/images/diablo-iii.svg'),
+                '/detail/hs': require('../assets/images/hearthstone.svg')
               }
             }
         },

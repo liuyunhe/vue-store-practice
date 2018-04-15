@@ -251,19 +251,19 @@
     padding-left: 120px;
   }
   .index-board-car .index-board-item-inner{
-    background: url(https://shop.battlenet.com.cn/static/1.11.0/images/family-icons/world-of-warcraft.svg) no-repeat;
+    background: url(../assets/images/world-of-warcraft.svg) no-repeat;
     background-size: 100px;
   }
   .index-board-loud .index-board-item-inner{
-    background: url(https://shop.battlenet.com.cn/static/1.11.0/images/family-icons/starcraft-ii.svg) no-repeat;
+    background: url(../assets/images/starcraft-ii.svg) no-repeat;
     background-size: 100px;
   }
   .index-board-earth .index-board-item-inner{
-    background: url(https://shop.battlenet.com.cn/static/1.11.0/images/family-icons/diablo-iii.svg) no-repeat;
+    background: url(../assets/images/diablo-iii.svg) no-repeat;
     background-size: 100px;
   }
   .index-board-hill .index-board-item-inner{
-    background: url(https://shop.battlenet.com.cn/static/1.11.0/images/family-icons/hearthstone.svg) no-repeat;
+    background: url(../assets/images/hearthstone.svg) no-repeat;
     background-size: 100px;
   }
   .index-board-item h2 {
