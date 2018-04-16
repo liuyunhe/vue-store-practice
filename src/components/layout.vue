@@ -116,6 +116,7 @@
     height: 90px;
     line-height: 90px;
     width: 100%;
+    min-width: 1200px;
   }
   .app-head-inner {
     width: 1200px;
@@ -145,6 +146,7 @@
     text-align: center;
     height: 80px;
     width: 100%;
+    min-width: 1200px;
     line-height: 80px;
     background: #e3e4e8;
     clear: both;
