@@ -19,7 +19,7 @@
 
         </div>
         <div class="index-left-block lastest-news">
-          <h2>支持</h2>
+          <h2 @click="aaa()">支持</h2>
           <ul>
             <li v-for="item in newsList">
               <a class="new-item" :href="item.url"  target="_blank">{{ item.title }}</a>
@@ -51,6 +51,7 @@
 <script>
     import slideShow from '../components/slideShow'
     import bus from '../eventsCenter/bus'
+    import Vue from 'vue'
     export default {
       components:{
         slideShow
@@ -178,9 +179,22 @@
       methods:{
         doSomethingOnSlideShow(index) {
 //          console.log('doSomethingOnSlideShow' + index)
+        },
+        aaa(){
+          this.$set(this.newsList,0,{"id":1,"title":"战网通行证","url":"https://www.battlenet.com.cn/zh/"})
+//          this.newsList[0] = {"id":1,"title":"战网通行证","url":"https://www.battlenet.com.cn/zh/"}
+          console.log(this.newsList)
+//          this.newsList =[
+//            {"id":1,"title":"战网通行证","url":"https://www.battlenet.com.cn/zh/"},
+//            {"id":2,"title":"暴雪新闻","url":"https://cn.news.blizzard.com/zh-cn/"},
+//            {"id":3,"title":"暴雪商城","url":"https://shop.battlenet.com.cn/zh-cn"},
+//            {"id":4,"title":"查尔星港","url":"http://s.163.com/"},
+//            {"id":5,"title":"艾泽拉斯国家地理","url":"http://bbs.nga.cn/"}
+//          ]
         }
       },
       mounted() {
+//
         if(this.newsList.length == 0){
           this.newsList =[
             {"id":1,"title":"战网通行证","url":"https://www.battlenet.com.cn/zh/"},
