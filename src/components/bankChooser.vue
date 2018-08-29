@@ -4,6 +4,7 @@
         <li
           v-for="(item,index) in banks"
           @click="chooseSelection(index)"
+          :key="index"
           :title="item.label"
           :class="[item.name,{active:index === nowIndex}]"
         >
@@ -11,12 +12,6 @@
       </ul>
     </div>
 </template>
-
-<style>
-    body {
-
-    }
-</style>
 
 <script>
   export default {
@@ -72,7 +67,8 @@
           this.nowIndex = index;
           this.$emit("on-change",this.banks[index])
         }
-      }
+      },
+    
     }
 </script>
 <style scoped>
